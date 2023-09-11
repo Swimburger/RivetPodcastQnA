@@ -1,0 +1,21 @@
+{
+  "name": "rivetpodcastqna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "npx tsc && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ironclad/rivet-core": "file:/Users/niels/rivet/packages/core",
+    "@ironclad/rivet-node": "file:/Users/niels/rivet/packages/node",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "typescript": "^5.2.2"
+  }
+}
