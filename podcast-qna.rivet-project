@@ -28,11 +28,10 @@ data:
             final_model: default
           outgoingConnections:
             - response->"Extract answer" 7FJs-B1Mvop1DE5oAazIM/object
-          visualData: 732.0250177155339/269.9918952422212/292.5441868641735/3
+          visualData: 732.0250177155339/269.9918952422212/292.5441868641735/16
         '[kYb85La8pcUHAgVhOB6Il]:graphInput "Question input"':
           data:
             dataType: string
-            defaultValue: ""
             id: question
             useDefaultValueInput: false
           outgoingConnections:
@@ -41,13 +40,12 @@ data:
         '[sTwDImk1nq3MbciSGtLsD]:graphInput "Transcript ID input"':
           data:
             dataType: string
-            defaultValue: ""
             id: transcript_id
             useDefaultValueInput: false
           outgoingConnections:
             - data->"LeMUR Question & Answers"
               WkinzJuXgy_mMZMbZyTIr/transcript_ids
-          visualData: 316/240/300/null
+          visualData: 317.3531393805345/198.05267920342934/300/13
     WRusMurrS4d7m6NR3dDNr:
       metadata:
         description: ""
@@ -58,12 +56,12 @@ data:
           data:
             dataType: string
             id: transcript_text
-          visualData: 523.4740589549316/-572.6626393330525/300/63
+          visualData: 126.24138305165197/-627.1402634569309/300/93
         '[HdBlebQfe8qUCKKtkPLaz]:graphOutput "Output transcript ID"':
           data:
             dataType: string
             id: transcript_id
-          visualData: 522.0159998850042/-393.32137373196963/300/57
+          visualData: 125.91827448430543/-418.2902847887472/300/91
         '[PqhV9HstiwGNMcPbF1kQy]:graphInput "Audio Input"':
           data:
             dataType: string
@@ -71,23 +69,16 @@ data:
             useDefaultValueInput: false
           outgoingConnections:
             - data->"Transcribe Audio" pPcQeVAWx-Jui__xhA4pG/audio
-          visualData: -687.787142846683/-454.97495073851155/300/79
+          visualData: -617.3495622021824/-419.90244482186455/300/88
         '[RwVg8Kyjd21PqVlLcD-i9]:graphOutput "Output transcript object"':
           data:
             dataType: object
             id: transcript_object
-          visualData: 523.4740589549317/-219.8123444105969/300/64
-        '[UzHrq8mN9z72cw3sJIPfb]:extractObjectPath "Get ID"':
-          data:
-            path: $.id
-            usePathInput: false
-          outgoingConnections:
-            - match->"Output transcript ID" HdBlebQfe8qUCKKtkPLaz/value
-          visualData: 125.77972888034817/-390.3629113138554/250/54
+          visualData: 127.3763335542329/-202.7880868718849/300/92
         '[pPcQeVAWx-Jui__xhA4pG]:assemblyAiTranscribeAudio "Transcribe Audio"':
           outgoingConnections:
+            - id->"Output transcript ID" HdBlebQfe8qUCKKtkPLaz/value
             - text->"Output transcript text" 0zuASaBP0m6mPjrb3MWMW/value
-            - transcript->"Get ID" UzHrq8mN9z72cw3sJIPfb/object
             - transcript->"Output transcript object" RwVg8Kyjd21PqVlLcD-i9/value
           visualData: -251.5163012047889/-425.04505283944974/292.99341767826/68
     c08R2ArgKMA9DW-RX_geX:
@@ -103,13 +94,13 @@ data:
             useErrorOutput: false
           outgoingConnections:
             - transcript_id->"Ask LeMUR" u2-5xo8Mk3b9ZkGyBt3D2/transcript_id
-          visualData: 757.7261583796231/597.564056779714/300/7
+          visualData: 801.1620558155206/645.0512362668934/300/23
         '[u2-5xo8Mk3b9ZkGyBt3D2]:subGraph "Ask LeMUR"':
           data:
             graphId: 8vfXM3ipkap_Wb0bbMumr
             useAsGraphPartialOutput: false
             useErrorOutput: false
-          visualData: 757.1212489687193/344.62658753689004/300/8
+          visualData: 796.6918116067983/358.1538933985913/300/22
         '[uRHHtO4GAe5GpelQaKaGE]:userInput "Get question"':
           data:
             prompt: Ask your question
@@ -123,7 +114,7 @@ data:
             useInput: false
           outgoingConnections:
             - output->"Create transcript" -4NBESSxgQLGLGgNog2Zd/audio_url
-          visualData: 395/586.7233927570627/250/9
+          visualData: 391.61538461538464/649.0567260903961/250/24
   metadata:
     description: Ask questions about a podcast episode
     id: cE_jlWx2JevyUxufYU2dJ
