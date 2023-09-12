@@ -1,21 +1,15 @@
 {
-  "name": "rivetpodcastqna",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "run": "npx tsc && node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "rivet-podcast-qna",
+  "license": "MIT",
   "dependencies": {
-    "@ironclad/rivet-core": "file:/Users/niels/rivet/packages/core",
-    "@ironclad/rivet-node": "file:/Users/niels/rivet/packages/node",
-    "dotenv": "^16.3.1"
+    "@ironclad/rivet-node": "^1.3.0",
+    "dotenv": "^16.3.1",
+    "ora": "^7.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.6.0",
-    "typescript": "^5.2.2"
+    "tsx": "^3.12.9"
+  },
+  "scripts": {
+    "app": "tsx index.ts"
   }
 }

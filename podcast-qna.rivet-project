@@ -1,0 +1,130 @@
+version: 4
+data:
+  attachedData:
+    trivet:
+      testSuites: []
+      version: 1
+  graphs:
+    8vfXM3ipkap_Wb0bbMumr:
+      metadata:
+        description: ""
+        id: 8vfXM3ipkap_Wb0bbMumr
+        name: Ask question
+      nodes:
+        '[5bMSOjvZ_CCiPmyoQo6sV]:graphOutput "Output answer"':
+          data:
+            dataType: string
+            id: answer
+          visualData: 1497.1116913264/272.0816913637764/300/12
+        '[7FJs-B1Mvop1DE5oAazIM]:extractObjectPath "Extract answer"':
+          data:
+            path: $[0].answer
+            usePathInput: false
+          outgoingConnections:
+            - match->"Output answer" 5bMSOjvZ_CCiPmyoQo6sV/value
+          visualData: 1133.8283629993805/278.43539502859477/250/10
+        '[WkinzJuXgy_mMZMbZyTIr]:assemblyAiLemurQa "LeMUR Question & Answers"':
+          data:
+            final_model: default
+          outgoingConnections:
+            - response->"Extract answer" 7FJs-B1Mvop1DE5oAazIM/object
+          visualData: 732.0250177155339/269.9918952422212/292.5441868641735/3
+        '[kYb85La8pcUHAgVhOB6Il]:graphInput "Question input"':
+          data:
+            dataType: string
+            defaultValue: ""
+            id: question
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"LeMUR Question & Answers" WkinzJuXgy_mMZMbZyTIr/questions
+          visualData: 317.24611192066743/403.5141509012153/300/11
+        '[sTwDImk1nq3MbciSGtLsD]:graphInput "Transcript ID input"':
+          data:
+            dataType: string
+            defaultValue: ""
+            id: transcript_id
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"LeMUR Question & Answers"
+              WkinzJuXgy_mMZMbZyTIr/transcript_ids
+          visualData: 316/240/300/null
+    WRusMurrS4d7m6NR3dDNr:
+      metadata:
+        description: ""
+        id: WRusMurrS4d7m6NR3dDNr
+        name: Create transcript
+      nodes:
+        '[0zuASaBP0m6mPjrb3MWMW]:graphOutput "Output transcript text"':
+          data:
+            dataType: string
+            id: transcript_text
+          visualData: 523.4740589549316/-572.6626393330525/300/63
+        '[HdBlebQfe8qUCKKtkPLaz]:graphOutput "Output transcript ID"':
+          data:
+            dataType: string
+            id: transcript_id
+          visualData: 522.0159998850042/-393.32137373196963/300/57
+        '[PqhV9HstiwGNMcPbF1kQy]:graphInput "Audio Input"':
+          data:
+            dataType: string
+            id: audio_url
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Transcribe Audio" pPcQeVAWx-Jui__xhA4pG/audio
+          visualData: -687.787142846683/-454.97495073851155/300/79
+        '[RwVg8Kyjd21PqVlLcD-i9]:graphOutput "Output transcript object"':
+          data:
+            dataType: object
+            id: transcript_object
+          visualData: 523.4740589549317/-219.8123444105969/300/64
+        '[UzHrq8mN9z72cw3sJIPfb]:extractObjectPath "Get ID"':
+          data:
+            path: $.id
+            usePathInput: false
+          outgoingConnections:
+            - match->"Output transcript ID" HdBlebQfe8qUCKKtkPLaz/value
+          visualData: 125.77972888034817/-390.3629113138554/250/54
+        '[pPcQeVAWx-Jui__xhA4pG]:assemblyAiTranscribeAudio "Transcribe Audio"':
+          outgoingConnections:
+            - text->"Output transcript text" 0zuASaBP0m6mPjrb3MWMW/value
+            - transcript->"Get ID" UzHrq8mN9z72cw3sJIPfb/object
+            - transcript->"Output transcript object" RwVg8Kyjd21PqVlLcD-i9/value
+          visualData: -251.5163012047889/-425.04505283944974/292.99341767826/68
+    c08R2ArgKMA9DW-RX_geX:
+      metadata:
+        description: ""
+        id: c08R2ArgKMA9DW-RX_geX
+        name: Q&A
+      nodes:
+        '[-4NBESSxgQLGLGgNog2Zd]:subGraph "Create transcript"':
+          data:
+            graphId: WRusMurrS4d7m6NR3dDNr
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          outgoingConnections:
+            - transcript_id->"Ask LeMUR" u2-5xo8Mk3b9ZkGyBt3D2/transcript_id
+          visualData: 757.7261583796231/597.564056779714/300/7
+        '[u2-5xo8Mk3b9ZkGyBt3D2]:subGraph "Ask LeMUR"':
+          data:
+            graphId: 8vfXM3ipkap_Wb0bbMumr
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          visualData: 757.1212489687193/344.62658753689004/300/8
+        '[uRHHtO4GAe5GpelQaKaGE]:userInput "Get question"':
+          data:
+            prompt: Ask your question
+            useInput: false
+          outgoingConnections:
+            - output->"Ask LeMUR" u2-5xo8Mk3b9ZkGyBt3D2/question
+          visualData: 389.7658450540862/357.0406865543436/250/1
+        '[vyCYaIX0GMoVH_xngXrr3]:userInput "Get Audio URL"':
+          data:
+            prompt: What is URL of the podcast audio file?
+            useInput: false
+          outgoingConnections:
+            - output->"Create transcript" -4NBESSxgQLGLGgNog2Zd/audio_url
+          visualData: 395/586.7233927570627/250/9
+  metadata:
+    description: Ask questions about a podcast episode
+    id: cE_jlWx2JevyUxufYU2dJ
+    title: Podcast Q&A
