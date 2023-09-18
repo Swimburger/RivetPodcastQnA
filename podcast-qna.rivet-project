@@ -22,13 +22,13 @@ data:
             usePathInput: false
           outgoingConnections:
             - match->"Output answer" 5bMSOjvZ_CCiPmyoQo6sV/value
-          visualData: 1133.8283629993805/278.43539502859477/250/10
+          visualData: 1133.8283629993805/278.43539502859477/250/20
         '[WkinzJuXgy_mMZMbZyTIr]:assemblyAiLemurQa "LeMUR Question & Answers"':
           data:
             final_model: default
           outgoingConnections:
             - response->"Extract answer" 7FJs-B1Mvop1DE5oAazIM/object
-          visualData: 732.0250177155339/269.9918952422212/292.5441868641735/16
+          visualData: 732.0250177155339/269.9918952422212/292.5441868641735/19
         '[kYb85La8pcUHAgVhOB6Il]:graphInput "Question input"':
           data:
             dataType: string
@@ -36,7 +36,7 @@ data:
             useDefaultValueInput: false
           outgoingConnections:
             - data->"LeMUR Question & Answers" WkinzJuXgy_mMZMbZyTIr/questions
-          visualData: 317.24611192066743/403.5141509012153/300/11
+          visualData: 317.24611192066743/403.5141509012153/300/18
         '[sTwDImk1nq3MbciSGtLsD]:graphInput "Transcript ID input"':
           data:
             dataType: string
@@ -45,7 +45,7 @@ data:
           outgoingConnections:
             - data->"LeMUR Question & Answers"
               WkinzJuXgy_mMZMbZyTIr/transcript_ids
-          visualData: 317.3531393805345/198.05267920342934/300/13
+          visualData: 316/196.6995398228948/300/17
     WRusMurrS4d7m6NR3dDNr:
       metadata:
         description: ""
@@ -69,7 +69,7 @@ data:
             useDefaultValueInput: false
           outgoingConnections:
             - data->"Transcribe Audio" pPcQeVAWx-Jui__xhA4pG/audio
-          visualData: -617.3495622021824/-419.90244482186455/300/88
+          visualData: -617.3495622021824/-419.90244482186455/300/94
         '[RwVg8Kyjd21PqVlLcD-i9]:graphOutput "Output transcript object"':
           data:
             dataType: object
@@ -100,14 +100,14 @@ data:
             graphId: 8vfXM3ipkap_Wb0bbMumr
             useAsGraphPartialOutput: false
             useErrorOutput: false
-          visualData: 796.6918116067983/358.1538933985913/300/22
+          visualData: 796.6918116067983/358.1538933985913/300/26
         '[uRHHtO4GAe5GpelQaKaGE]:userInput "Get question"':
           data:
             prompt: Ask your question
             useInput: false
           outgoingConnections:
             - output->"Ask LeMUR" u2-5xo8Mk3b9ZkGyBt3D2/question
-          visualData: 389.7658450540862/357.0406865543436/250/1
+          visualData: 389.7658450540862/357.0406865543436/250/25
         '[vyCYaIX0GMoVH_xngXrr3]:userInput "Get Audio URL"':
           data:
             prompt: What is URL of the podcast audio file?
@@ -119,3 +119,7 @@ data:
     description: Ask questions about a podcast episode
     id: cE_jlWx2JevyUxufYU2dJ
     title: Podcast Q&A
+  plugins:
+    - id: assemblyAi
+      name: assemblyAi
+      type: built-in
