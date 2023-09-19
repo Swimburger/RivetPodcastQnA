@@ -1,5 +1,5 @@
-import * as readline from 'node:readline/promises';
-import { stdin as input, stdout as output } from 'node:process';
+import * as readline from 'readline/promises';
+import { stdin as input, stdout as output } from 'process';
 import 'dotenv/config';
 import ora from 'ora';
 import { globalRivetNodeRegistry, plugins, loadProjectFromFile, runGraph } from '@ironclad/rivet-node';
@@ -33,7 +33,6 @@ function getAssemblyAiApiKey() {
     inputs: {
       audio_url: audioUrl,
     },
-    openAiKey: null as unknown as string,
     pluginSettings: aaiPluginSettings
   });
   spinner.succeed("Transcribed");
@@ -52,7 +51,6 @@ function getAssemblyAiApiKey() {
         transcript_id: transcriptId,
         question: answer
       },
-      openAiKey: null as unknown as string,
       pluginSettings: aaiPluginSettings
     });
     spinner.stop();
